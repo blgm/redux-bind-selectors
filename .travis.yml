@@ -1,3 +1,11 @@
 language: node_js
 node_js:
 - node
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: oscblgm@gmail.com
+  api_key:
+    secure: pfRWmVCEVV/KKgV2L2pbhtnx66txnc1QZvKKNy3xy6eWM4GvytqQ9yr76+uMQ/2V+geFpzSr9YcACuWx58uL1VeDxSj4cqZoJpCP2kPpRUGlEMY/29Z6YCXS3N+Qiufu+PqoT6+cAlHxU6dflvqKf1RJ6Lx4J8aeGbWESXPsbijaFS2IYAAnJkBcjuDPFwVy4wMSnfIRq8YnQQuEpHsNmitu8YkV0gLoXT/dYnb3ve2tVvq52dF3HvAk8Bn8+rdRaYFC3SpZ4Vh3m2R+o7Pho2OmIkOKB67fJYKvniPoyp+lFPGlrV+HgN6OxTtWivNjDsexkzurAtg0jHXUFAuJOZD3SmnBMhaTxuajPx7BMuy20kTbKymrJSt+eZSYjCUQrgMMvpa1PvtH0qeJfEYj0481w9KgMQrHZDNmQ//sCF0ymG8y6uNmHs86Q9hlOoNmQ1RShhDJaC27MGNqPo3sPQ7P9Hl/qPWekt1Ay+bHYNXAUl9Et/Vu5g9d0nC8l66KvRtNambaf/s/IRgaB0chM3b03m2hbg1Zyc2Z7qIhMm6q/9H3KtP2P/Yn0N4bULAF5Reiud1yU0lx0D7np/jGpveHSNr4jUmt521m1QNdY2TqHYQOOLtNDtdr92ehuuUEr84nCspWM/DCaK6fXiQM23w+KmFpRtOhD5FR4vbf0hU=
+  on:
+    repo: blgm/redux-bind-selectors
