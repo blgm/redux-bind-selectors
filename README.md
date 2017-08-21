@@ -15,6 +15,27 @@ store.getState()
 // }
 ```
 
+## Installation
+```
+npm install --save redux-bind-selectors
+```
+
+## Usage
+`bindSelectors()` takes an object where the keys are paths in the state object, and the properties are selector functions.  This is analogous to the Redux `combineSelectors()` function.
+```javascript
+const enhancer = bindSelectors({
+  selector1: myReselectSelector,
+  selector2: state => state.a + state.b
+})
+```
+Selectors are pure functions that take the state object as their only argument.  Check out [reselect](https://www.npmjs.com/package/reselect) to build efficient selectors.
+
+When creating the store, the enhancer should be the last argument to the `createStore()` function.  If you have more than one enhancer, you can use the `compose()` function in Redux to compose them.
+```javascript
+const store1 = createStore(reducer, enhancer)
+const store2 = createStore(reducer, initialState, enhancer)
+```
+
 ## Motivation
 A Redux store should contain the *minimum representation* of state, so rather than storing:
 ```javascript
@@ -51,28 +72,9 @@ You should try out this module if you are not using React, you prefer to keep vi
 
 If the output of `getState()` is used for other purposes (for instance to persist the state), then careful consideration should be given as to how this module will affect that.
 
-## Installation
-```
-npm install --save redux-bind-selectors
-```
-
-## Usage
-`bindSelectors()` takes an object where the keys are paths in the state object, and the properties are selector functions.  This is analogous to the Redux `combineSelectors()` function.
-```javascript
-const enhancer = bindSelectors({
-  selector1: myReselectSelector,
-  selector2: state => state.a + state.b
-})
-```
-Selectors are pure functions that take the state object as their only argument.  Check out [reselect](https://www.npmjs.com/package/reselect) to build efficient selectors.
-
-A selector cannot have the same path in the state object as a reducer. (This is why we do not simply reuse the `createStructuredSelector()` function from reselect.)
-
-When creating the store, the enhancer should be the last argument to the `createStore()` function.  If you have more than one enhancer, you can use the `compose()` function in Redux to compose them.
-```javascript
-const store1 = createStore(reducer, enhancer)
-const store2 = createStore(reducer, initialState, enhancer)
-```
+## Notes
+- A selector cannot have the same path in the state object as a reducer. (This is why we do not simply reuse the `createStructuredSelector()` function from reselect)
+- Paths are all top level object keys
 
 ## License
 See [LICENSE.md](LICENSE.md)
