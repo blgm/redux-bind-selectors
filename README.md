@@ -1,4 +1,6 @@
 # redux-bind-selectors
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/blgm/redux-bind-selectors.svg)](https://greenkeeper.io/)
 A Redux [store enhancer](https://github.com/reactjs/redux/blob/master/docs/Glossary.md#store-enhancer) for computing derived state by binding selectors to a [Redux](http://redux.js.org/) store, so that `getState()` incorporates derived data.
 
 ```javascript
