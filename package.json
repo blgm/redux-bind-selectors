@@ -1,0 +1,41 @@
+{
+  "name": "redux-bind-selectors",
+  "version": "0.0.1",
+  "description": "A Redux store enhancer for computing derived state by binding selectors to the store",
+  "main": "bind-selectors.js",
+  "scripts": {
+    "pretest": "standard --verbose --fix",
+    "test": "jest",
+    "posttest": "npm run markdown:lint && npm run markdown:links",
+    "markdown:lint": "standard-markdown",
+    "markdown:links": "ls -1 *.md | xargs -t -n 1 markdown-link-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blgm/redux-bind-selectors.git"
+  },
+  "keywords": [
+    "redux",
+    "reselect",
+    "selector",
+    "state",
+    "compute",
+    "derive",
+    "derived"
+  ],
+  "author": "George Blue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blgm/redux-bind-selectors/issues"
+  },
+  "homepage": "https://github.com/blgm/redux-bind-selectors#readme",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "jest": "^19.0.2",
+    "markdown-link-check": "^3.1.1",
+    "redux": "^3.7.2",
+    "standard": "^10.0.3",
+    "standard-markdown": "^4.0.2"
+  }
+}
