@@ -4,7 +4,6 @@
 
 # redux-bind-selectors
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/blgm/redux-bind-selectors.svg)](https://greenkeeper.io/)
 A Redux [store enhancer](https://github.com/reactjs/redux/blob/master/docs/Glossary.md#store-enhancer) for computing derived state by binding selectors to a [Redux](http://redux.js.org/) store, so that `getState()` incorporates derived data.
 
 ```javascript
@@ -16,9 +15,30 @@ const store = createStore(
 
 store.getState()
 // {
-//   numbers: [4, 6, 9, 2]  // <-- initial state from the store
+//   numbers: [4, 6, 9, 2], // <-- initial state from the store
 //   total: 21              // <-- result of the `total` selector
 // }
+```
+
+## Installation
+```
+npm install --save redux-bind-selectors
+```
+
+## Usage
+`bindSelectors()` takes an object where the keys are paths in the state object, and the properties are selector functions.  This is analogous to the Redux `combineSelectors()` function.
+```javascript
+const enhancer = bindSelectors({
+  selector1: myReselectSelector,
+  selector2: state => state.a + state.b
+})
+```
+Selectors are pure functions that take the state object as their only argument.  Check out [reselect](https://www.npmjs.com/package/reselect) to build efficient selectors.
+
+When creating the store, the enhancer should be the last argument to the `createStore()` function.  If you have more than one enhancer, you can use the `compose()` function in Redux to compose them.
+```javascript
+const store1 = createStore(reducer, enhancer)
+const store2 = createStore(reducer, initialState, enhancer)
 ```
 
 ## Motivation
@@ -55,30 +75,11 @@ If you are new to React and Redux, then you should initially consider `mapStateT
 
 You should try out this module if you are not using React, you prefer to keep view and model logic separate, you live on the edge, or you consider this approach to be more elegant.  It's relatively easy to switch between the two, or do both at the same time.
 
-If the output of `getState()` is used for other purposes (for instance to persist the state), then careful consideration should be given as to how this module will affect that.
+If the output of `getState()` is used for other purposes (for instance, to persist the state), then careful consideration should be given as to how this module will affect that.
 
-## Installation
-```
-npm install --save redux-bind-selectors
-```
-
-## Usage
-`bindSelectors()` takes an object where the keys are paths in the state object, and the properties are selector functions.  This is analogous to the Redux `combineSelectors()` function.
-```javascript
-const enhancer = bindSelectors({
-  selector1: myReselectSelector,
-  selector2: state => state.a + state.b
-})
-```
-Selectors are pure functions that take the state object as their only argument.  Check out [reselect](https://www.npmjs.com/package/reselect) to build efficient selectors.
-
-A selector cannot have the same path in the state object as a reducer. (This is why we do not simply reuse the `createStructuredSelector()` function from reselect.)
-
-When creating the store, the enhancer should be the last argument to the `createStore()` function.  If you have more than one enhancer, you can use the `compose()` function in Redux to compose them.
-```javascript
-const store1 = createStore(reducer, enhancer)
-const store2 = createStore(reducer, initialState, enhancer)
-```
+## Notes
+- A selector cannot have the same path in the state object as a reducer. (This is why we do not simply reuse the `createStructuredSelector()` function from reselect)
+- Paths are all top level object keys
 
 ## License
 See [LICENSE.md](LICENSE.md)
