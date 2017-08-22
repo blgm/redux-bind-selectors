@@ -28,8 +28,12 @@ export default [
       format: 'cjs'
     },
     plugins: [
-      // We assume a modern Node.js version, so only need to convert ES2015 modules and the object rest spread operator.
-      babel() // Uses .babelrc
+      // Only need to convert the object rest spread operator since that's not part of ES2015
+      // Rollup will convert the ES2015 modules to CommonJS
+      babel({
+        plugins: ['transform-object-rest-spread'],
+        babelrc: false
+      })
     ]
   },
   {
@@ -40,8 +44,12 @@ export default [
       format: 'umd'
     },
     plugins: [
-      // We assume a modern browser, only only need to convert ES2015 modules and the object rest spread operator.
-      babel() // Uses .babelrc
+      // Only need to convert the object rest spread operator since that's not part of ES2015
+      // Rollup will convert the ES2015 modules to UMD
+      babel({
+        plugins: ['transform-object-rest-spread'],
+        babelrc: false
+      })
     ]
   }
 ]
