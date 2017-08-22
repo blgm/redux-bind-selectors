@@ -42,5 +42,20 @@
     "rollup-plugin-babel": "^3.0.2",
     "standard": "^10.0.3",
     "standard-markdown": "^4.0.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
