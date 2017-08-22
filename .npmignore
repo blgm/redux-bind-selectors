@@ -2,6 +2,6 @@
 !package.json
 !README.md
 !LICENSE.md
-cjs/
-es/
-umd/
+!cjs/*.js
+!es/*.js
+!umd/*.js
