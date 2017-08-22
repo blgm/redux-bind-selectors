@@ -29,7 +29,7 @@ export default [
     },
     plugins: [
       // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup with convert the ES2015 modules to CommonJS
+      // Rollup will convert the ES2015 modules to CommonJS
       babel({
         plugins: ['transform-object-rest-spread'],
         babelrc: false
@@ -45,7 +45,7 @@ export default [
     },
     plugins: [
       // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup with convert the ES2015 modules to UMD
+      // Rollup will convert the ES2015 modules to UMD
       babel({
         plugins: ['transform-object-rest-spread'],
         babelrc: false
