@@ -13,9 +13,8 @@ export default [
       format: 'es'
     },
     plugins: [
-      // Need to convert the object rest spread operator since that's not part of ES2015
+      // Only need to convert the object rest spread operator since that's not part of ES2015
       babel({
-        exclude: 'node_modules/**',
         plugins: ['transform-object-rest-spread'],
         babelrc: false
       })
@@ -29,7 +28,7 @@ export default [
       format: 'cjs'
     },
     plugins: [
-      // We assume a modern Node.js version, so only need to convert ES2015 modules and the object spread operator.
+      // We assume a modern Node.js version, so only need to convert ES2015 modules and the object rest spread operator.
       babel() // Uses .babelrc
     ]
   },
@@ -41,7 +40,7 @@ export default [
       format: 'umd'
     },
     plugins: [
-      // We assume a modern browser, only only need to convert ES2015 modules and the object spread operator.
+      // We assume a modern browser, only only need to convert ES2015 modules and the object rest spread operator.
       babel() // Uses .babelrc
     ]
   }
