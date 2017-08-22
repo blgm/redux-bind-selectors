@@ -1,5 +1,7 @@
 *
 !package.json
 !README.md
-!bind-selectors.js
 !LICENSE.md
+!cjs/*.js
+!es/*.js
+!umd/*.js
