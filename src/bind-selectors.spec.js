@@ -5,7 +5,7 @@
 
 /* eslint-env jest */
 import {createStore} from 'redux'
-import bindSelectors from '.'
+import bindSelectors from './bind-selectors'
 
 describe('Redux Bind Selectors', () => {
   const mockReducer = (state = {foo: 'bar'}, action) => state
