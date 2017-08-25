@@ -4,6 +4,17 @@
  */
 
 import babel from 'rollup-plugin-babel'
+import uglify from 'rollup-plugin-uglify'
+import {minify} from 'uglify-es'
+
+const plugins = () => [
+  babel({
+    presets: [['env', {modules: false}]],
+    plugins: ['transform-object-rest-spread'],
+    babelrc: false
+  }),
+  uglify({}, minify)
+]
 
 export default [
   {
@@ -12,13 +23,7 @@ export default [
       file: 'es/bind-selectors.js',
       format: 'es'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
+    plugins: plugins()
   },
   {
     input: 'src/bind-selectors.js',
@@ -27,14 +32,7 @@ export default [
       file: 'cjs/bind-selectors.js',
       format: 'cjs'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup will convert the ES2015 modules to CommonJS
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
+    plugins: plugins()
   },
   {
     input: 'src/bind-selectors.js',
@@ -43,13 +41,6 @@ export default [
       file: 'umd/bind-selectors.js',
       format: 'umd'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup will convert the ES2015 modules to UMD
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
+    plugins: plugins()
   }
 ]
