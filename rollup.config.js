@@ -12,13 +12,11 @@ export default [
       file: 'es/bind-selectors.js',
       format: 'es'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
+    plugins: [babel({
+      presets: [['env', {modules: false}]],
+      plugins: ['transform-object-rest-spread'],
+      babelrc: false
+    })]
   },
   {
     input: 'src/bind-selectors.js',
@@ -27,15 +25,11 @@ export default [
       file: 'cjs/bind-selectors.js',
       format: 'cjs'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup will convert the ES2015 modules to CommonJS
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
-  },
+    plugins: [babel({
+      presets: [['env', {modules: false}]],
+      plugins: ['transform-object-rest-spread'],
+      babelrc: false
+    })] },
   {
     input: 'src/bind-selectors.js',
     name: 'bindSelectors',
@@ -43,13 +37,10 @@ export default [
       file: 'umd/bind-selectors.js',
       format: 'umd'
     },
-    plugins: [
-      // Only need to convert the object rest spread operator since that's not part of ES2015
-      // Rollup will convert the ES2015 modules to UMD
-      babel({
-        plugins: ['transform-object-rest-spread'],
-        babelrc: false
-      })
-    ]
+    plugins: [babel({
+      presets: [['env', {modules: false}]],
+      plugins: ['transform-object-rest-spread'],
+      babelrc: false
+    })]
   }
 ]
