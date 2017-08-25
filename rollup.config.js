@@ -4,6 +4,17 @@
  */
 
 import babel from 'rollup-plugin-babel'
+import uglify from 'rollup-plugin-uglify'
+import {minify} from 'uglify-es'
+
+const plugins = () => [
+  babel({
+    presets: [['env', {modules: false}]],
+    plugins: ['transform-object-rest-spread'],
+    babelrc: false
+  }),
+  uglify({}, minify)
+]
 
 export default [
   {
@@ -12,11 +23,7 @@ export default [
       file: 'es/bind-selectors.js',
       format: 'es'
     },
-    plugins: [babel({
-      presets: [['env', {modules: false}]],
-      plugins: ['transform-object-rest-spread'],
-      babelrc: false
-    })]
+    plugins: plugins()
   },
   {
     input: 'src/bind-selectors.js',
@@ -25,11 +32,8 @@ export default [
       file: 'cjs/bind-selectors.js',
       format: 'cjs'
     },
-    plugins: [babel({
-      presets: [['env', {modules: false}]],
-      plugins: ['transform-object-rest-spread'],
-      babelrc: false
-    })] },
+    plugins: plugins()
+  },
   {
     input: 'src/bind-selectors.js',
     name: 'bindSelectors',
@@ -37,10 +41,6 @@ export default [
       file: 'umd/bind-selectors.js',
       format: 'umd'
     },
-    plugins: [babel({
-      presets: [['env', {modules: false}]],
-      plugins: ['transform-object-rest-spread'],
-      babelrc: false
-    })]
+    plugins: plugins()
   }
 ]
