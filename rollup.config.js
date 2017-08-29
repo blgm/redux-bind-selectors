@@ -4,8 +4,6 @@
  */
 
 import babel from 'rollup-plugin-babel'
-import uglify from 'rollup-plugin-uglify'
-import {minify} from 'uglify-es'
 
 export default {
   input: 'src/bind-selectors.js',
@@ -30,14 +28,6 @@ export default {
       presets: [['env', {modules: false}]],
       plugins: ['transform-object-rest-spread'],
       babelrc: false
-    }),
-    uglify(
-      {
-        output: { // Preserve license
-          comments: (node, {type, value}) => type === 'comment2' && value.includes('license')
-        }
-      },
-      minify
-    )
+    })
   ]
 }
