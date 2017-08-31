@@ -22,6 +22,9 @@ export default function bindSelectors (selectorMap = {}) {
       if (key in lastStoreState) {
         throw new Error(`The selector key '${key}' cannot be used because it exists in the initial state`)
       }
+      if (typeof selectorMap[key] !== 'function') {
+        throw new Error(`The selector '${key}' must be a function`)
+      }
     }
 
     const getState = () => {
@@ -32,6 +35,9 @@ export default function bindSelectors (selectorMap = {}) {
         let derivedState = {}
         for (const key in selectorMap) {
           derivedState[key] = selectorMap[key](currentStoreState)
+          if (typeof derivedState[key] === 'undefined') {
+            throw new Error(`Selector '${key}' returned 'undefined'; to indicate no value, return 'null' instead`)
+          }
         }
 
         computedState = {...currentStoreState, ...derivedState}
