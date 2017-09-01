@@ -28,6 +28,17 @@ describe('Redux Bind Selectors', () => {
   })
 
   describe('binding selectors', () => {
+    it('throws if the state is not an object', () => {
+      expect(() => {
+        createStore(
+          (state, action) => 11,
+          bindSelectors({
+            foo: () => 42
+          }
+        ))
+      }).toThrowError("The state must be a JavaScript object, not a 'number'")
+    })
+
     it('throws if a selector key has the same name as a key in the initial state', () => {
       expect(() => {
         createStore(mockReducer, bindSelectors({
@@ -103,6 +114,38 @@ describe('Redux Bind Selectors', () => {
 
       expect(() => store.getState())
         .toThrowError("Selector 'fake' returned 'undefined'; to indicate no value, return 'null' instead")
+    })
+
+    it('does not allow retrospective changes to the selector map', () => {
+      const mockSelector1 = jest.fn().mockReturnValue(42)
+      const mockSelector2 = jest.fn().mockReturnValue('baz')
+
+      const selectorMap = {answerToLife: mockSelector1}
+
+      const store = createStore(
+        (state = {acc: 0}, action) => ({acc: state.acc + 1}),
+        bindSelectors(selectorMap)
+      )
+
+      let state = store.getState()
+      expect(state).toEqual({
+        acc: 1, // from the Store
+        answerToLife: 42 // derived by the first selector
+      })
+
+      selectorMap.bar = mockSelector2
+      store.dispatch({type: '@@FAKE'})
+
+      state = store.getState()
+      expect(state).toEqual({
+        acc: 2, // from the Store
+        answerToLife: 42 // derived by the first selector
+      })
+
+      expect(mockSelector1).toHaveBeenCalledTimes(2)
+      expect(mockSelector1).toHaveBeenCalledWith({'acc': 1})
+      expect(mockSelector1).toHaveBeenCalledWith({'acc': 2})
+      expect(mockSelector2).not.toHaveBeenCalledTimes(1)
     })
   })
 
