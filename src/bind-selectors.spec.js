@@ -28,12 +28,20 @@ describe('Redux Bind Selectors', () => {
   })
 
   describe('binding selectors', () => {
-    it('fails if a selector key has the same name as a key in the initial state', () => {
+    it('throws if a selector key has the same name as a key in the initial state', () => {
       expect(() => {
         createStore(mockReducer, bindSelectors({
           foo: () => 42 // Same key in the initial state!!
         }))
       }).toThrowError("The selector key 'foo' cannot be used because it exists in the initial state")
+    })
+
+    it('throws if a selector is not a function', () => {
+      expect(() => {
+        createStore(mockReducer, bindSelectors({
+          baz: 42 // Not a function!!
+        }))
+      }).toThrowError("The selector 'baz' must be a function")
     })
 
     it('calls a selector with the state, and assigns its value to the derived state', () => {
@@ -85,6 +93,16 @@ describe('Redux Bind Selectors', () => {
 
       expect(mockSelector).toHaveBeenCalledTimes(1)
       expect(mockSelector).toHaveBeenCalledWith({foo: 'bar'})
+    })
+
+    it('throws when a selector returns `undefined`', () => {
+      const mockSelector = jest.fn().mockReturnValue(undefined)
+      const store = createStore(mockReducer, bindSelectors({
+        fake: mockSelector
+      }))
+
+      expect(() => store.getState())
+        .toThrowError("Selector 'fake' returned 'undefined'; to indicate no value, return 'null' instead")
     })
   })
 

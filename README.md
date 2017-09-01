@@ -83,6 +83,7 @@ If the output of `getState()` is used for other purposes (for instance, to persi
 ## Notes
 - A selector cannot have the same path in the state object as a reducer. (This is why we do not simply reuse the `createStructuredSelector()` function from reselect)
 - Paths are all top level object keys
+- A selector cannot return `undefined`, in order to be consistent with Redux where a combined reducer cannot return `undefined`.  Instead, use `null`.
 
 ## License
 See [LICENSE.md](LICENSE.md)
