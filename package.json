@@ -35,7 +35,7 @@
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "jest": "^21.0.0",
+    "jest": "^22.0.0",
     "markdown-link-check": "^3.1.1",
     "redux": "^3.7.2",
     "rollup": "^0.52.0",
