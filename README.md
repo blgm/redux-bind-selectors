@@ -1,7 +1,6 @@
 [![npm](https://img.shields.io/npm/v/redux-bind-selectors.svg)](https://www.npmjs.com/package/redux-bind-selectors )
 [![Build Status](https://travis-ci.org/blgm/redux-bind-selectors.svg?branch=master)](https://travis-ci.org/blgm/redux-bind-selectors )
 [![Dependencies](https://david-dm.org/blgm/redux-bind-selectors.svg)](https://david-dm.org/blgm/redux-bind-selectors)
-[![NSP Status](https://nodesecurity.io/orgs/blgm/projects/3a04afdd-3d27-4619-a444-233f823c217a/badge)](https://nodesecurity.io/orgs/blgm/projects/3a04afdd-3d27-4619-a444-233f823c217a)
 
 # redux-bind-selectors
 
