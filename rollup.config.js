@@ -7,22 +7,12 @@ import babel from 'rollup-plugin-babel'
 
 export default {
   input: 'src/bind-selectors.js',
-  name: 'bindSelectors',
-  sourcemap: true,
-  output: [
-    {
-      file: 'es/bind-selectors.js',
-      format: 'es'
-    },
-    {
-      file: 'cjs/bind-selectors.js',
-      format: 'cjs'
-    },
-    {
-      file: 'umd/bind-selectors.js',
-      format: 'umd'
-    }
-  ],
+  output: ['es', 'cjs', 'umd'].map(format => ({
+    format,
+    file: `${format}/bind-selectors.js`,
+    name: 'bindSelectors',
+    sourcemap: true
+  })),
   plugins: [
     babel({
       presets: [['env', {modules: false}]],
