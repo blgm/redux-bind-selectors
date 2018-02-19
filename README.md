@@ -68,13 +68,13 @@ const total = state => state.numbers.reduce((sum, value) => sum + value, 0)
 Instead of a single, simple state object, **state is now split between the store and a collection of selector functions**, which adds complexity.
 
 #### Solution without `redux-bind-selectors`
-Use `mapStateToProps()` in [React Redux](https://www.npmjs.com/package/react-redux), to [connect the selectors to the state](http://redux.js.org/docs/recipes/ComputingDerivedData.html).
+Use `mapStateToProps()` in [React Redux](https://www.npmjs.com/package/react-redux), to [connect the selectors to the state](https://redux.js.org/recipes/computing-derived-data).
 
 #### Solution with `redux-bind-selectors`
 Use this module to bind the selectors to the store, so that the store runs the selectors for you, producing a single object.  This approach retains the advantages of minimum state representation, and separation of concerns between reducers and selectors.
 
 #### Which one should I use?
-If you are new to React and Redux, then you should initially consider `mapStateToProps()`, as recommended by the [Redux documentation](http://redux.js.org/docs/recipes/ComputingDerivedData.html).
+If you are new to React and Redux, then you should initially consider `mapStateToProps()`, as recommended by the [Redux documentation](https://redux.js.org/recipes/computing-derived-data).
 
 You should try out this module if you are not using React, you prefer to keep view and model logic separate, you live on the edge, or you consider this approach to be more elegant.  It's relatively easy to switch between the two, or do both at the same time.
 
