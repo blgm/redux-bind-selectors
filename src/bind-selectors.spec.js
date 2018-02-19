@@ -34,8 +34,8 @@ describe('Redux Bind Selectors', () => {
           (state, action) => 11,
           bindSelectors({
             foo: () => 42
-          }
-        ))
+          })
+        )
       }).toThrowError("The state must be a JavaScript object, not a 'number'")
     })
 
