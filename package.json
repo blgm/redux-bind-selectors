@@ -38,7 +38,7 @@
     "jest": "^23.1.0",
     "markdown-link-check": "^3.6.2",
     "redux": "^4.0.0",
-    "rollup": "^0.61.1",
+    "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.4",
     "standard": "^11.0.1",
     "standard-markdown": "^4.0.2"
