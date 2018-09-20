@@ -15,7 +15,7 @@ export default {
   })),
   plugins: [
     babel({
-      presets: [['env', {modules: false}]],
+      presets: [['env', { modules: false }]],
       plugins: ['transform-object-rest-spread'],
       babelrc: false
     })

@@ -7,13 +7,13 @@
 A Redux [store enhancer](https://github.com/reactjs/redux/blob/master/docs/Glossary.md#store-enhancer) for computing derived state by binding selectors to a [Redux](http://redux.js.org/) store, so that `getState()` incorporates derived data.
 
 ```javascript
-import {createStore} from 'redux'
+import { createStore } from 'redux'
 import bindSelectors from 'redux-bind-selectors'
 
 const store = createStore(
-  myReducer,               // The Redux reducer
-  {numbers: [4, 6, 9, 2]}, // Initial state (optional)
-  bindSelectors({total})   // Bind the `total` selector
+  myReducer, // The Redux reducer
+  { numbers: [4, 6, 9, 2] }, // Initial state (optional)
+  bindSelectors({ total }) // Bind the `total` selector
 )
 
 store.getState()
