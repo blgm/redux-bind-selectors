@@ -13,7 +13,7 @@ export default function bindSelectors (inputSelectorMap = {}) {
   if (typeof inputSelectorMap !== 'object') {
     throw new Error('The selector map must be specified as an object')
   }
-  const selectorMap = {...inputSelectorMap}
+  const selectorMap = { ...inputSelectorMap }
 
   // Check that all the selectors are functions
   for (const key in selectorMap) {
@@ -53,12 +53,12 @@ export default function bindSelectors (inputSelectorMap = {}) {
           }
         }
 
-        computedState = {...currentStoreState, ...derivedState}
+        computedState = { ...currentStoreState, ...derivedState }
       }
 
       return computedState
     }
 
-    return {...store, getState}
+    return { ...store, getState }
   }
 }

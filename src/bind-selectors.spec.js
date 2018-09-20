@@ -4,17 +4,17 @@
  */
 
 /* eslint-env jest */
-import {createStore} from 'redux'
+import { createStore } from 'redux'
 import bindSelectors from './bind-selectors'
 
 describe('Redux Bind Selectors', () => {
-  const mockReducer = (state = {foo: 'bar'}, action) => state
+  const mockReducer = (state = { foo: 'bar' }, action) => state
 
   describe('applying the enhancer', () => {
     it('does not break the getState() method', () => {
       const store = createStore(mockReducer, bindSelectors())
       const state = store.getState()
-      expect(state).toEqual({foo: 'bar'})
+      expect(state).toEqual({ foo: 'bar' })
     })
 
     it('fails if the selector map is not an object', () => {
@@ -68,7 +68,7 @@ describe('Redux Bind Selectors', () => {
       })
 
       expect(mockSelector).toHaveBeenCalledTimes(1)
-      expect(mockSelector).toHaveBeenCalledWith({foo: 'bar'})
+      expect(mockSelector).toHaveBeenCalledWith({ foo: 'bar' })
     })
 
     it('allows more than one selector', () => {
@@ -88,9 +88,9 @@ describe('Redux Bind Selectors', () => {
       })
 
       expect(mockSelector1).toHaveBeenCalledTimes(1)
-      expect(mockSelector1).toHaveBeenCalledWith({foo: 'bar'})
+      expect(mockSelector1).toHaveBeenCalledWith({ foo: 'bar' })
       expect(mockSelector2).toHaveBeenCalledTimes(1)
-      expect(mockSelector2).toHaveBeenCalledWith({foo: 'bar'})
+      expect(mockSelector2).toHaveBeenCalledWith({ foo: 'bar' })
     })
 
     it('does not call the selectors when the state has not changed', () => {
@@ -103,7 +103,7 @@ describe('Redux Bind Selectors', () => {
       store.getState() // Twice
 
       expect(mockSelector).toHaveBeenCalledTimes(1)
-      expect(mockSelector).toHaveBeenCalledWith({foo: 'bar'})
+      expect(mockSelector).toHaveBeenCalledWith({ foo: 'bar' })
     })
 
     it('throws when a selector returns `undefined`', () => {
@@ -120,10 +120,10 @@ describe('Redux Bind Selectors', () => {
       const mockSelector1 = jest.fn().mockReturnValue(42)
       const mockSelector2 = jest.fn().mockReturnValue('baz')
 
-      const selectorMap = {answerToLife: mockSelector1}
+      const selectorMap = { answerToLife: mockSelector1 }
 
       const store = createStore(
-        (state = {acc: 0}, action) => ({acc: state.acc + 1}),
+        (state = { acc: 0 }, action) => ({ acc: state.acc + 1 }),
         bindSelectors(selectorMap)
       )
 
@@ -134,7 +134,7 @@ describe('Redux Bind Selectors', () => {
       })
 
       selectorMap.bar = mockSelector2
-      store.dispatch({type: '@@FAKE'})
+      store.dispatch({ type: '@@FAKE' })
 
       state = store.getState()
       expect(state).toEqual({
@@ -143,8 +143,8 @@ describe('Redux Bind Selectors', () => {
       })
 
       expect(mockSelector1).toHaveBeenCalledTimes(2)
-      expect(mockSelector1).toHaveBeenCalledWith({'acc': 1})
-      expect(mockSelector1).toHaveBeenCalledWith({'acc': 2})
+      expect(mockSelector1).toHaveBeenCalledWith({ 'acc': 1 })
+      expect(mockSelector1).toHaveBeenCalledWith({ 'acc': 2 })
       expect(mockSelector2).not.toHaveBeenCalledTimes(1)
     })
   })
@@ -153,9 +153,9 @@ describe('Redux Bind Selectors', () => {
     it('recalculates the state when the store changes', () => {
       const fakeSubscriber = jest.fn()
 
-      const fakeReducer = (state = {count: 0}, {type, amount}) => {
+      const fakeReducer = (state = { count: 0 }, { type, amount }) => {
         if (type === 'increment') {
-          state = {count: state.count + amount}
+          state = { count: state.count + amount }
         }
         return state
       }
@@ -165,7 +165,7 @@ describe('Redux Bind Selectors', () => {
 
       const store = createStore(
         fakeReducer,
-        {count: 5}, // Initial state
+        { count: 5 }, // Initial state
         bindSelectors({
           higher,
           lower
