@@ -14,10 +14,6 @@ export default {
     sourcemap: true
   })),
   plugins: [
-    babel({
-      presets: [['env', { modules: false }]],
-      plugins: ['transform-object-rest-spread'],
-      babelrc: false
-    })
+    babel()
   ]
 }
