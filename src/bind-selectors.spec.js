@@ -143,8 +143,8 @@ describe('Redux Bind Selectors', () => {
       })
 
       expect(mockSelector1).toHaveBeenCalledTimes(2)
-      expect(mockSelector1).toHaveBeenCalledWith({ 'acc': 1 })
-      expect(mockSelector1).toHaveBeenCalledWith({ 'acc': 2 })
+      expect(mockSelector1).toHaveBeenCalledWith({ acc: 1 })
+      expect(mockSelector1).toHaveBeenCalledWith({ acc: 2 })
       expect(mockSelector2).not.toHaveBeenCalledTimes(1)
     })
   })
