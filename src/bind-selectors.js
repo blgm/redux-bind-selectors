@@ -45,7 +45,7 @@ export default function bindSelectors (inputSelectorMap = {}) {
       // Only recalculate the state if the store state has changed, or we have not computed it before
       if ((currentStoreState !== lastStoreState) || !computedState) {
         lastStoreState = currentStoreState
-        let derivedState = {}
+        const derivedState = {}
         for (const key in selectorMap) {
           derivedState[key] = selectorMap[key](currentStoreState)
           if (typeof derivedState[key] === 'undefined') {
