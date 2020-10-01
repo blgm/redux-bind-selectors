@@ -11,7 +11,8 @@ export default {
     format,
     file: `${format}/bind-selectors.js`,
     name: 'bindSelectors',
-    sourcemap: true
+    sourcemap: true,
+    exports: 'default'
   })),
   plugins: [
     babel()
