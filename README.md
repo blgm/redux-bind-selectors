@@ -1,5 +1,5 @@
-[![npm](https://img.shields.io/npm/v/redux-bind-selectors.svg)](https://www.npmjs.com/package/redux-bind-selectors )
-[![Build Status](https://travis-ci.org/blgm/redux-bind-selectors.svg?branch=master)](https://travis-ci.org/blgm/redux-bind-selectors )
+[![npm](https://img.shields.io/npm/v/redux-bind-selectors.svg)](https://www.npmjs.com/package/redux-bind-selectors)
+[![test](https://github.com/blgm/redux-bind-selectors/workflows/test/badge.svg?branch=master)](https://github.com/blgm/redux-bind-selectors/actions?query=workflow%3Atest+branch%3Amaster)
 
 # redux-bind-selectors
 
