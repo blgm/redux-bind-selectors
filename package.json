@@ -1,6 +1,6 @@
 {
   "name": "redux-bind-selectors",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "A Redux store enhancer for computing derived state by binding selectors to the store",
   "main": "cjs/bind-selectors.js",
   "module": "es/bind-selectors.js",
