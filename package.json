@@ -44,7 +44,7 @@
     "rollup": "^2.0.2",
     "rollup-plugin-babel": "^4.3.2",
     "standard": "^16.0.3",
-    "standard-markdown": "^6.0.0"
+    "standard-markdown": "^7.0.0"
   },
   "jest": {
     "collectCoverage": true,
