@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '14', '16', '18' ]
+        node: [ 'lts/Fermium', 'lts/Gallium', 'lts/Hydrogen', 'lts/Iron', 'latest' ]
     name: Node ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v3
